@@ -1,1 +1,1 @@
-const String amvinesMain = 'https://amvines.com/api';
+const String mainUrl = 'https://khelaahobe.com/api';

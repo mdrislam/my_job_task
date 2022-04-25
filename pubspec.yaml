@@ -33,6 +33,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.3.2
   smooth_star_rating_null_safety: ^1.0.4+2
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:
