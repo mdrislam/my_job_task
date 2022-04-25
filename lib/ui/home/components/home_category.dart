@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_job_task/config/size_config.dart';
 import 'package:my_job_task/const/app_color_constant.dart';
 import 'package:my_job_task/ui/gb_widgets/section_tittle.dart';
 
@@ -33,7 +34,7 @@ class _HomeCategoryState extends State<HomeCategory> {
           ]),
       child: Column(
         children: [
-          SectionTittle(text: 'Category', press: () {}, clickText: ''),
+          SectionTittle(text: 'All Categories', press: () {}, clickText: ''),
           const SizedBox(
             height: 15.0,
           ),
@@ -45,27 +46,35 @@ class _HomeCategoryState extends State<HomeCategory> {
             child: Row(children: [
               ...List.generate(
                   6,
-                  (index) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CircleAvatar(
-                            radius: 50,
-                            backgroundImage: NetworkImage(
-                                'https://www.refrigeratedfrozenfood.com/ext/resources/NEW_RD_Website/DefaultImages/default-pasta.jpg?1430942591',
-                                scale: 1),
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10,bottom: 10),
-                            child: Text(
-                              'Category Name',
-                              style: AppColorsConst.headingStyle(14),
+                  (index) => Container(
+                    width: getProportionateScreenWidth(100),
+                    margin: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                  'https://www.refrigeratedfrozenfood.com/ext/resources/NEW_RD_Website/DefaultImages/default-pasta.jpg?1430942591',
+                                  scale: 1),
                             ),
-                          )
-                        ],
-                      )),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Center(
+                              child: Text(
+                                'Category',
+                                style: AppColorsConst.headingStyle(13,),
+                                maxLines: 1,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                          ],
+                        ),
+                  )),
             ]),
           )
         ],

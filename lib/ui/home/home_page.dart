@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:my_job_task/const/app_color_constant.dart';
 import 'package:my_job_task/ui/home/components/home_category.dart';
+import 'package:my_job_task/ui/home/components/set_menus.dart';
 
 import '../gb_widgets/home_page_header.dart';
 
@@ -24,13 +25,14 @@ class _HomePageState extends State<HomePage> {
             mainAxisSize: MainAxisSize.max,
             children: [
               const HomePageHeader(),
-             const  SizedBox(height: 20,),
-             HomeCategory(),
-              Center(
-                  child: Text(
-                'Home Page',
-                style: AppColorsConst.titleStyle,
-              )),
+              const SizedBox(
+                height: 20,
+              ),
+              HomeCategory(),
+              const SizedBox(
+                height: 20,
+              ),
+              SetMenus(),
             ],
           ),
         ),
