@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_job_task/const/app_color_constant.dart';
 import 'package:my_job_task/ui/home/components/banners.dart';
 import 'package:my_job_task/ui/home/components/home_category.dart';
+import 'package:my_job_task/ui/home/components/popular_items.dart';
 import 'package:my_job_task/ui/home/components/set_menus.dart';
 
 import '../gb_widgets/home_page_header.dart';
@@ -37,7 +38,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 20,
               ),
-              const Banners()
+              const Banners(),
+              const SizedBox(
+                height: 20,
+              ),
+              const PopularItems()
             ],
           ),
         ),
