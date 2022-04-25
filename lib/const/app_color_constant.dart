@@ -10,19 +10,19 @@ class AppColorsConst {
   static const secondaryColor = Color(0xFF979797);
   static const textColor = Color(0xFF757575);
 
-  TextStyle subHeadingStyle(double? size) {
+ static TextStyle subHeadingStyle(double? size) {
     return GoogleFonts.lato(
         textStyle: TextStyle(
             fontSize: size!, fontWeight: FontWeight.bold, color: Colors.grey));
   }
 
-  TextStyle headingStyle(double? size) {
+ static TextStyle headingStyle(double? size) {
     return GoogleFonts.lato(
         textStyle: TextStyle(
             fontSize: size!, fontWeight: FontWeight.bold, color: Colors.black));
   }
 
-  TextStyle get titleStyle {
+ static TextStyle get titleStyle {
     return GoogleFonts.lato(
         textStyle: TextStyle(
             fontSize: getProportionateScreenWidth(16),
@@ -30,7 +30,7 @@ class AppColorsConst {
             color: Colors.black));
   }
 
-  TextStyle get detailsTextStyle {
+ static TextStyle get detailsTextStyle {
     return GoogleFonts.lato(
         textStyle: TextStyle(
             fontSize: getProportionateScreenWidth(13),
@@ -38,7 +38,7 @@ class AppColorsConst {
             color: Colors.black));
   }
 
-  TextStyle get accountTextStyle {
+ static TextStyle get accountTextStyle {
     return GoogleFonts.lato(
         textStyle: TextStyle(
             fontSize: getProportionateScreenWidth(13),
