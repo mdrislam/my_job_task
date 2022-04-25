@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:my_job_task/const/app_color_constant.dart';
+import 'package:my_job_task/ui/home/components/home_category.dart';
+
+import '../gb_widgets/home_page_header.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,15 +15,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const HomePageHeader(),
+             const  SizedBox(height: 20,),
+             HomeCategory(),
+              Center(
+                  child: Text(
+                'Home Page',
+                style: AppColorsConst.titleStyle,
+              )),
+            ],
+          ),
+        ),
       ),
-      body: Center(
-          child: Text(
-        'Home Page',
-        style: AppColorsConst.titleStyle,
-      )),
     );
   }
 }
