@@ -19,7 +19,7 @@ class AppColorsConst {
  static TextStyle headingStyle(double? size) {
     return GoogleFonts.lato(
         textStyle: TextStyle(
-            fontSize: size!, fontWeight: FontWeight.bold, color: Colors.black));
+            fontSize: getProportionateScreenWidth(size!), fontWeight: FontWeight.bold, color: Colors.black));
   }
 
  static TextStyle get titleStyle {
