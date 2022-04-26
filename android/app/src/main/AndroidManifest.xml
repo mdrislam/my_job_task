@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.my_job_task">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="my_job_task"
         android:name="${applicationName}"
