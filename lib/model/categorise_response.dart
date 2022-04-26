@@ -1,7 +1,7 @@
 class CategoriseResponse {
   String? message;
   int? statusCode;
-  List<Data>? data;
+  List<Category>? data;
 
   CategoriseResponse({this.message, this.statusCode, this.data});
 
@@ -9,17 +9,17 @@ class CategoriseResponse {
     message = json['message'];
     statusCode = json['status_code'];
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <Category>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add( Category.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['status_code'] = this.statusCode;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['message'] = message;
+    data['status_code'] = statusCode;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -27,16 +27,16 @@ class CategoriseResponse {
   }
 }
 
-class Data {
+class Category {
   int? id;
   String? link;
   int? status;
-  Null? createdAt;
+  String? createdAt;
   String? updatedAt;
 
-  Data({this.id, this.link, this.status, this.createdAt, this.updatedAt});
+  Category({this.id, this.link, this.status, this.createdAt, this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Category.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     link = json['link'];
     status = json['status'];
@@ -45,12 +45,12 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['link'] = this.link;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['id'] = id;
+    data['link'] = link;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_job_task/const/app_color_constant.dart';
 import 'package:my_job_task/ui/home/components/banners.dart';
 import 'package:my_job_task/ui/home/components/home_category.dart';
 import 'package:my_job_task/ui/home/components/popular_items.dart';

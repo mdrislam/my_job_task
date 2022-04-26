@@ -1,14 +1,12 @@
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
-import 'package:my_job_task/const/app_color_constant.dart';
 
 import 'package:my_job_task/ui/gb_widgets/section_tittle.dart';
 import 'package:my_job_task/ui/home/components/popular_item_card.dart';
-import 'package:my_job_task/ui/home/components/set_menu_cart.dart';
-import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
-import '../../../config/size_config.dart';
+
+
 
 class PopularItems extends StatefulWidget {
   const PopularItems({Key? key}) : super(key: key);
