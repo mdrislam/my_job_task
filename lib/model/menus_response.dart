@@ -1,7 +1,7 @@
 class MenusResponse {
   String? message;
   int? statusCode;
-  List<Data>? data;
+  List<Menu>? data;
 
   MenusResponse({this.message, this.statusCode, this.data});
 
@@ -9,17 +9,17 @@ class MenusResponse {
     message = json['message'];
     statusCode = json['status_code'];
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <Menu>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add( Menu.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['status_code'] = this.statusCode;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['message'] = message;
+    data['status_code'] = statusCode;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -27,7 +27,7 @@ class MenusResponse {
   }
 }
 
-class Data {
+class Menu {
   int? id;
   int? status;
   String? link;
@@ -35,7 +35,7 @@ class Data {
   String? createdAt;
   String? updatedAt;
 
-  Data(
+  Menu(
       {this.id,
       this.status,
       this.link,
@@ -43,7 +43,7 @@ class Data {
       this.createdAt,
       this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Menu.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     status = json['status'];
     link = json['link'];
@@ -53,13 +53,13 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['status'] = this.status;
-    data['link'] = this.link;
-    data['version'] = this.version;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['id'] = id;
+    data['status'] = status;
+    data['link'] = link;
+    data['version'] = version;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

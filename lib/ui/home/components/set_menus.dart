@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_job_task/model/menus_response.dart';
+import 'package:my_job_task/service/service_api.dart';
 
 import 'package:my_job_task/ui/gb_widgets/section_tittle.dart';
 import 'package:my_job_task/ui/home/components/set_menu_cart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SetMenus extends StatefulWidget {
   const SetMenus({Key? key}) : super(key: key);
@@ -11,12 +14,13 @@ class SetMenus extends StatefulWidget {
 }
 
 class _SetMenusState extends State<SetMenus> {
-  
+  List<Menu> menusList = [];
   @override
   void initState() {
-    // TODO: implement initState
+    getMenus();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,10 +35,20 @@ class _SetMenusState extends State<SetMenus> {
             parent: AlwaysScrollableScrollPhysics(),
           ),
           child: Row(children: [
-            ...List.generate(6, (index) => const SetMenuCard()),
+            ...List.generate(menusList.length, (index) =>  SetMenuCard(menu: menusList[index],)),
           ]),
         )
       ],
     );
+  }
+
+  getMenus() async {
+    final prefs = await SharedPreferences.getInstance();
+    MenusResponse? menusResponse =
+        await ServiceApi.getMenuByToken(prefs.getString('token').toString());
+    if (menusResponse!.statusCode == 200) {
+      menusList = menusResponse.data!;
+    }
+    setState(() {});
   }
 }
