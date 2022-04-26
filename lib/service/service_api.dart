@@ -8,7 +8,7 @@ import 'package:my_job_task/model/user_signin_response.dart';
 class EServiceApi {
   ///https://khelaahobe.com/api/login
   ///get Email Sign In Response
-  static Future<UserSignInResponse?> getUserSigninByEmail(
+  static Future<UserSignInResponse?> getUserSigninByPhoneAndPassword(
     String email,
     String password,
   ) async {
