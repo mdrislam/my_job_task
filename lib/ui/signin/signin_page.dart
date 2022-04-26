@@ -1,7 +1,15 @@
+import 'dart:developer';
+
 import "package:flutter/material.dart";
 import 'package:my_job_task/config/size_config.dart';
+import 'package:my_job_task/main.dart';
+import 'package:my_job_task/model/user_signin_response.dart';
+import 'package:my_job_task/ui/gb_widgets/showloding_dialog.dart';
+import 'package:my_job_task/ui/navigation/bottom_navigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../const/app_color_constant.dart';
+import '../../service/service_api.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -71,7 +79,7 @@ class _SignInPageState extends State<SignInPage> {
             ElevatedButton(
                 onPressed: () {
                   if (phone.text.isNotEmpty && password.text.isNotEmpty) {
-                    
+                    getSignIn(phone.text, password.text);
                   } else {
                     print('Empty Fields');
                   }
@@ -89,5 +97,24 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+
+  getSignIn(String phone, String password) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    showLoaderDialog(context, 'Please wait......');
+    UserSignInResponse? userSignInResponse =
+        await ServiceApi.getUserSigninByPhoneAndPassword(phone, password);
+    print(userSignInResponse!.token!.plainTextToken);
+    if (userSignInResponse.statusCode == 200) {
+      prefs.setString(
+          'token', userSignInResponse.token!.plainTextToken.toString());
+      Navigator.pop(context);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const BottomNavigation()),
+          (Route<dynamic> route) => false);
+    } else {
+      Navigator.pop(context);
+    }
   }
 }

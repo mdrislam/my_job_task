@@ -7,18 +7,18 @@ class UserSignInResponse {
 
   UserSignInResponse.fromJson(Map<String, dynamic> json) {
     statusCode = json['status_code'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    token = json['token'] != null ? new Token.fromJson(json['token']) : null;
+    data = json['data'] != null ?  Data.fromJson(json['data']) : null;
+    token = json['token'] != null ?  Token.fromJson(json['token']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status_code'] = this.statusCode;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['status_code'] = statusCode;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    if (this.token != null) {
-      data['token'] = this.token!.toJson();
+    if (token != null) {
+      data['token'] = token!.toJson();
     }
     return data;
   }
@@ -31,7 +31,7 @@ class Data {
   String? email;
   String? username;
   String? phone;
-  Null? emailVerifiedAt;
+  String? emailVerifiedAt;
   String? promoCode;
   int? verify;
   String? createdAt;
@@ -65,18 +65,18 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['email'] = this.email;
-    data['username'] = this.username;
-    data['phone'] = this.phone;
-    data['email_verified_at'] = this.emailVerifiedAt;
-    data['promo_code'] = this.promoCode;
-    data['verify'] = this.verify;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['id'] = id;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['email'] = email;
+    data['username'] = username;
+    data['phone'] = phone;
+    data['email_verified_at'] = emailVerifiedAt;
+    data['promo_code'] = promoCode;
+    data['verify'] = verify;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }
@@ -89,17 +89,17 @@ class Token {
 
   Token.fromJson(Map<String, dynamic> json) {
     accessToken = json['accessToken'] != null
-        ? new AccessToken.fromJson(json['accessToken'])
+        ?  AccessToken.fromJson(json['accessToken'])
         : null;
     plainTextToken = json['plainTextToken'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.accessToken != null) {
-      data['accessToken'] = this.accessToken!.toJson();
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    if (accessToken != null) {
+      data['accessToken'] = accessToken!.toJson();
     }
-    data['plainTextToken'] = this.plainTextToken;
+    data['plainTextToken'] = plainTextToken;
     return data;
   }
 }
@@ -133,14 +133,14 @@ class AccessToken {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['abilities'] = this.abilities;
-    data['tokenable_id'] = this.tokenableId;
-    data['tokenable_type'] = this.tokenableType;
-    data['updated_at'] = this.updatedAt;
-    data['created_at'] = this.createdAt;
-    data['id'] = this.id;
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['name'] = name;
+    data['abilities'] = abilities;
+    data['tokenable_id'] = tokenableId;
+    data['tokenable_type'] = tokenableType;
+    data['updated_at'] = updatedAt;
+    data['created_at'] = createdAt;
+    data['id'] = id;
     return data;
   }
 }

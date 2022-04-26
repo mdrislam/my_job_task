@@ -5,11 +5,11 @@ import 'package:my_job_task/model/categorise_response.dart';
 import 'package:my_job_task/model/menus_response.dart';
 import 'package:my_job_task/model/user_signin_response.dart';
 
-class EServiceApi {
+class ServiceApi {
   ///https://khelaahobe.com/api/login
   ///get Email Sign In Response
   static Future<UserSignInResponse?> getUserSigninByPhoneAndPassword(
-    String email,
+    String phone,
     String password,
   ) async {
     final response = await http.post(
@@ -18,7 +18,7 @@ class EServiceApi {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'email': email,
+        'phone': phone,
         'password': password,
       }),
     );
@@ -27,10 +27,8 @@ class EServiceApi {
     if (response.statusCode == 200) {
       print(response.body);
     } else {
-      print(response.statusCode);
       return null;
     }
-
     return UserSignInResponse.fromJson(body);
   }
 
@@ -38,7 +36,6 @@ class EServiceApi {
   static Future<CategoriseResponse?> getCategoriseByToken(
     String token,
   ) async {
-    
     final response = await http.get(
       Uri.parse(mainUrl + '/auth/flutter/category'),
       headers: <String, String>{
@@ -46,7 +43,6 @@ class EServiceApi {
         'Authorization': 'Bearer $token'
       },
     );
-  
 
     final body = json.decode(response.body);
     if (response.statusCode == 200) {
@@ -63,7 +59,6 @@ class EServiceApi {
   static Future<MenusResponse?> getMenuByToken(
     String token,
   ) async {
-  
     final response = await http.get(
       Uri.parse(mainUrl + '/auth/flutter/set/menu'),
       headers: <String, String>{
@@ -71,7 +66,7 @@ class EServiceApi {
         'Authorization': 'Bearer $token'
       },
     );
-  
+
     final body = json.decode(response.body);
     if (response.statusCode == 200) {
       print(response.body);
